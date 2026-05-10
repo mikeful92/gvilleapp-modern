@@ -1,0 +1,71 @@
+{% extends "home.html" %}
+
+{% block result %}
+<div class="results panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+            {% if electricObj and waterObj %}
+                <div class="col-md-6">
+                    <h2 class="text-center">
+                        <i class="fa fa-bolt"></i>
+                        Electricity for 2014
+                    </h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Kilowatts/Hour</th>
+                                <th>Estimated Bill</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in electricObj %}
+                            <tr>
+                                <td>{{ item.Month }}</td>
+                                <td>{{ item.KWH_Consumption }}</td>
+                                <td>${{ item.Charge }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center">
+                        <i class="fa fa-tint"></i>
+                        Water for 2014
+                    </h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>1,000 gallons/month</th>
+                                <th>Estimated Bill</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in waterObj %}
+                            <tr>
+                                <td>{{ item.Month }}</td>
+                                <td>{{ item.Water_Consumption }}</td>
+                                <td>${{ item.Charge }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="col-md-5">
+                    <p>No match found{% if address %} for <strong>{{ address }}</strong>{% endif %}.</p>
+                </div>
+                <div class="col-md-7">
+                    <ul>
+                        <li>Do not include city or state.</li>
+                        <li>Use abbreviations such as N for NORTH, SW for SOUTHWEST and ST for STREET.</li>
+                        <li>The address might not be served by GRU.</li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

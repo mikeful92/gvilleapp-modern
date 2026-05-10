@@ -1,0 +1,19 @@
+header {
+    margin: 0 0 5px 0;
+}
+
+.results {
+    margin-bottom: 80px;
+}
+
+.mainbar {
+    background-image: linear-gradient(to bottom, #337ab7 0, #265a88 100%);
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+body {
+    padding-bottom: 60px;
+}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form method="POST" action="{% url 'results' %}">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.address.label_tag }}
+                        {{ form.address }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="zipCode">Zip Code:</label>
+                        <input type="text" class="form-control" id="zipCode" placeholder="Optional">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-4 col-md-4">
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-primary form-submit">Look up</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% block result %}
+{% endblock %}
+{% endblock %}
