@@ -1,0 +1,15 @@
+.git
+.github
+.gitignore
+.dockerignore
+.venv
+venv
+env
+__pycache__
+*.pyc
+.DS_Store
+.idea
+.vscode
+README.md
+data/utility.sqlite3
+static/static_root

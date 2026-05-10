@@ -1,0 +1,34 @@
+[project]
+name = "gvilleapp-modern"
+version = "2.0.0"
+description = "Gainesville Utility consumption lookup — modernized."
+requires-python = ">=3.12"
+dependencies = [
+    "Django>=5.1,<5.3",
+    "gunicorn>=23.0",
+    "whitenoise>=6.7",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = ["static/static_root", "data"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "DJ",  # flake8-django
+]
+ignore = [
+    "E501",  # line length handled by formatter
+]
+
+[tool.ruff.lint.per-file-ignores]
+"Utility/models.py" = ["DJ001"]  # CharField names match historic schema, no default
+
+[tool.django-stubs]
+django_settings_module = "WebApp.settings"
