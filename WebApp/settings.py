@@ -73,7 +73,9 @@ STATICFILES_DIRS = [BASE_DIR / "static" / "static_dirs"]
 _staticfiles_backend = (
     "django.contrib.staticfiles.storage.StaticFilesStorage"
     if DEBUG
-    else "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    # See WebApp/storage.py for why we subclass instead of using WhiteNoise's
+    # stock storage directly.
+    else "WebApp.storage.TolerantCompressedManifestStaticFilesStorage"
 )
 
 STORAGES = {
