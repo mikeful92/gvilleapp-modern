@@ -43,6 +43,12 @@ jobs:
           DJANGO_DEBUG: "true"
         run: python manage.py test --verbosity=2
 
+      - name: Collectstatic (prod backend)
+        env:
+          DJANGO_SECRET_KEY: ci-key
+          DJANGO_DEBUG: "false"
+        run: python manage.py collectstatic --noinput
+
       - name: Smoke test home page
         env:
           DJANGO_SECRET_KEY: ci-key
